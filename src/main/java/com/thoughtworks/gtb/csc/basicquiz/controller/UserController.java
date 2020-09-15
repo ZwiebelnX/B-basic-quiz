@@ -1,5 +1,6 @@
 package com.thoughtworks.gtb.csc.basicquiz.controller;
 
+import com.thoughtworks.gtb.csc.basicquiz.model.Education;
 import com.thoughtworks.gtb.csc.basicquiz.model.User;
 import com.thoughtworks.gtb.csc.basicquiz.service.UserService;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -35,5 +37,10 @@ public class UserController {
     @GetMapping("{userId}")
     public ResponseEntity<User> getUser(@PathVariable int userId) {
         return ResponseEntity.ok(userService.getUser(userId));
+    }
+
+    @GetMapping("{userId}/educations")
+    public ResponseEntity<List<Education>> getUsersEducations(@PathVariable int userId) {
+        return ResponseEntity.ok(userService.getUsersEducations(userId));
     }
 }

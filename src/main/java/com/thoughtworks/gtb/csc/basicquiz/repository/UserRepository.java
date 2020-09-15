@@ -27,4 +27,8 @@ public class UserRepository {
     public User findById(int userId) {
         return userMap.get(userId);
     }
+
+    public boolean existsById(int userId) {
+        return userMap.containsKey(userId);
+    }
 }

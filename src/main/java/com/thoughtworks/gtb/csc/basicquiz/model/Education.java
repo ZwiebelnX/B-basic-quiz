@@ -1,5 +1,6 @@
 package com.thoughtworks.gtb.csc.basicquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Education {
 
+    @JsonIgnore
     private int id;
 
     private int userId;

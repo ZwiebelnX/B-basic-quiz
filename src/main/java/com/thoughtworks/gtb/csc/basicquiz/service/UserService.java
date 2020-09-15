@@ -60,4 +60,11 @@ public class UserService {
         }
         return user;
     }
+
+    public List<Education> getUsersEducations(int userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException(userId);
+        }
+        return educationRepository.findByUserId(userId);
+    }
 }

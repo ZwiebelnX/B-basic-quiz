@@ -1,13 +1,14 @@
 package com.thoughtworks.gtb.csc.basicquiz.repository;
 
 import com.thoughtworks.gtb.csc.basicquiz.model.Education;
-import com.thoughtworks.gtb.csc.basicquiz.model.User;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Component
 public class EducationRepository {
@@ -22,5 +23,12 @@ public class EducationRepository {
         }
         educationMap.put(education.getId(), education);
         return education;
+    }
+
+    public List<Education> findByUserId(int userId) {
+        return educationMap.values()
+            .stream()
+            .filter(education -> education.getUserId() == userId)
+            .collect(Collectors.toList());
     }
 }
