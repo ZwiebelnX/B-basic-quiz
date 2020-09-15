@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
-    private int id;
+    private long id;
 
     @NotEmpty(message = "名称不可为空")
     @Length(min = 1, max = 64, message = "用户名长度需要在1 - 64之间")

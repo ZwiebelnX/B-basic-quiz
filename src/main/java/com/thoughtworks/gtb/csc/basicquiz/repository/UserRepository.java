@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class UserRepository {
 
-    private static final Map<Integer, User> userMap = new ConcurrentHashMap<>();
+    private static final Map<Long, User> userMap = new ConcurrentHashMap<>();
 
-    private static final AtomicInteger nextId = new AtomicInteger(1);
+    private static final AtomicLong nextId = new AtomicLong(1);
 
     public User save(User user) {
         if (!userMap.containsKey(user.getId())) {
@@ -24,11 +24,11 @@ public class UserRepository {
         return user;
     }
 
-    public User findById(int userId) {
+    public User findById(long userId) {
         return userMap.get(userId);
     }
 
-    public boolean existsById(int userId) {
+    public boolean existsById(long userId) {
         return userMap.containsKey(userId);
     }
 }

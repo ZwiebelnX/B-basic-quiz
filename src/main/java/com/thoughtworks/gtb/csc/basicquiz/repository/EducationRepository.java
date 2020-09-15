@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 @Component
 public class EducationRepository {
 
-    private static final Map<Integer, Education> educationMap = new ConcurrentHashMap<>();
+    private static final Map<Long, Education> educationMap = new ConcurrentHashMap<>();
 
-    private static final AtomicInteger nextId = new AtomicInteger(1);
+    private static final AtomicLong nextId = new AtomicLong(1);
 
     public Education save(Education education) {
         if (!educationMap.containsKey(education.getId())) {
@@ -25,7 +25,7 @@ public class EducationRepository {
         return education;
     }
 
-    public List<Education> findByUserId(int userId) {
+    public List<Education> findByUserId(long userId) {
         return educationMap.values()
             .stream()
             .filter(education -> education.getUserId() == userId)

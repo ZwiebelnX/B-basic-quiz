@@ -35,17 +35,17 @@ public class UserController {
     }
 
     @GetMapping("{userId}")
-    public ResponseEntity<User> getUser(@PathVariable int userId) {
+    public ResponseEntity<User> getUser(@PathVariable long userId) {
         return ResponseEntity.ok(userService.getUser(userId));
     }
 
     @GetMapping("{userId}/educations")
-    public ResponseEntity<List<Education>> getUsersEducations(@PathVariable int userId) {
+    public ResponseEntity<List<Education>> getUsersEducations(@PathVariable long userId) {
         return ResponseEntity.ok(userService.getUsersEducations(userId));
     }
 
     @PostMapping("{userId}/educations")
-    public ResponseEntity<Education> addUserEducations(@PathVariable int userId,
+    public ResponseEntity<Education> addUserEducations(@PathVariable long userId,
         @Valid @RequestBody Education education) {
         return ResponseEntity.created(URI.create("")).body(userService.addUserEducations(userId, education));
     }

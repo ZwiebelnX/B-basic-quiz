@@ -55,7 +55,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUser(int userId) {
+    public User getUser(long userId) {
         User user = userRepository.findById(userId);
         if (user == null) {
             throw new UserNotFoundException(userId);
@@ -63,19 +63,19 @@ public class UserService {
         return user;
     }
 
-    public List<Education> getUsersEducations(int userId) {
+    public List<Education> getUsersEducations(long userId) {
         checkUserExist(userId);
         return educationRepository.findByUserId(userId);
     }
 
     // @Transactional
-    public Education addUserEducations(int userId, Education education) {
+    public Education addUserEducations(long userId, Education education) {
         checkUserExist(userId);
         education.setUserId(userId);
         return educationRepository.save(education);
     }
 
-    private void checkUserExist(int userId) {
+    private void checkUserExist(long userId) {
         if (!userRepository.existsById(userId)) {
             throw new UserNotFoundException(userId);
         }

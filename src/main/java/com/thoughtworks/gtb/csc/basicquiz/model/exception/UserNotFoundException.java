@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class UserNotFoundException extends BusinessBasicException {
 
-    public UserNotFoundException(int userId) {
+    public UserNotFoundException(long userId) {
         super(HttpStatus.NOT_FOUND, "ID为<" + userId + ">的用户未找到");
     }
 }
