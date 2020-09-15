@@ -23,4 +23,8 @@ public class UserRepository {
         userMap.put(user.getId(), user);
         return user;
     }
+
+    public User findById(int userId) {
+        return userMap.get(userId);
+    }
 }

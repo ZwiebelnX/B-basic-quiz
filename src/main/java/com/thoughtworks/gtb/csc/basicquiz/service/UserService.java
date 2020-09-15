@@ -3,6 +3,7 @@ package com.thoughtworks.gtb.csc.basicquiz.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.gtb.csc.basicquiz.model.Education;
 import com.thoughtworks.gtb.csc.basicquiz.model.User;
+import com.thoughtworks.gtb.csc.basicquiz.model.exception.UserNotFoundException;
 import com.thoughtworks.gtb.csc.basicquiz.repository.EducationRepository;
 import com.thoughtworks.gtb.csc.basicquiz.repository.UserRepository;
 
@@ -50,5 +51,13 @@ public class UserService {
 
     public User createUser(User user) {
         return userRepository.save(user);
+    }
+
+    public User getUser(int userId) {
+        User user = userRepository.findById(userId);
+        if (user == null) {
+            throw new UserNotFoundException(userId);
+        }
+        return user;
     }
 }
