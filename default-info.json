@@ -1,21 +1,38 @@
 [
-    {
-        "id": 1,
-        "name": "KAMIL",
-        "age": 24,
-        "avatar": "https://inews.gtimg.com/newsapp_match/0/3581582328/0",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.",
-        "education": [
-            {
-                "description": "Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.",
-                "year": "2005",
-                "title": "Secondary school specializing in artistic"
-            },
-            {
-                "description": "Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.",
-                "year": "2009",
-                "title": "First level graduation in Graphic Design"
-            }
-        ]
-    }
+  {
+    "name": "Chen Sicong",
+    "age": 22,
+    "avatar": "https://cong-onion.cn/upload/2019/8/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F-96f21a67cc7f43339b7a384b9d6f6f7f.jpg",
+    "description": "a coder, a teenager, a blogger, a dreamer.",
+    "education": [
+      {
+        "description": "As an undergraduate, I participated in a number of activities organized by the university, held a variety of positions, and participated in many competitions related to software development",
+        "year": 2020,
+        "title": "Nanjing University of Science and Technology"
+      },
+      {
+        "description": "As a high school student, studying hard, enthusiastic and cheerful, and met many good brothers",
+        "year": 2016,
+        "title": "Guangzhou No.47 High School"
+      }
+    ]
+  },
+  {
+    "name": "KAMIL",
+    "age": 24,
+    "avatar": "https://inews.gtimg.com/newsapp_match/0/3581582328/0",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.",
+    "education": [
+      {
+        "description": "Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.",
+        "year": 2005,
+        "title": "Secondary school specializing in artistic"
+      },
+      {
+        "description": "Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.",
+        "year": 2009,
+        "title": "First level graduation in Graphic Design"
+      }
+    ]
+  }
 ]
