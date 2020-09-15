@@ -51,7 +51,7 @@ public class BusinessExceptionHandler {
             .timestamp(new Timestamp(System.currentTimeMillis()))
             .status(String.valueOf(httpStatus.value()))
             .error(httpStatus.getReasonPhrase())
-            .message(stringBuilder.toString())
+            .message(stringBuilder.toString().trim())
             .build();
         return new ResponseEntity<>(businessError, httpStatus);
     }
