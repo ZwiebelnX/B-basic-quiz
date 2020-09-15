@@ -43,4 +43,10 @@ public class UserController {
     public ResponseEntity<List<Education>> getUsersEducations(@PathVariable int userId) {
         return ResponseEntity.ok(userService.getUsersEducations(userId));
     }
+
+    @PostMapping("{userId}/educations")
+    public ResponseEntity<Education> addUserEducations(@PathVariable int userId,
+        @Valid @RequestBody Education education) {
+        return ResponseEntity.created(URI.create("")).body(userService.addUserEducations(userId, education));
+    }
 }

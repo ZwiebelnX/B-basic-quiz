@@ -28,6 +28,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    // @Transactional
     @PostConstruct
     public void insertDefaultInfo() {
         List<User> userList = new ArrayList<>();
@@ -49,6 +50,7 @@ public class UserService {
         });
     }
 
+    // @Transactional
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -62,9 +64,20 @@ public class UserService {
     }
 
     public List<Education> getUsersEducations(int userId) {
+        checkUserExist(userId);
+        return educationRepository.findByUserId(userId);
+    }
+
+    // @Transactional
+    public Education addUserEducations(int userId, Education education) {
+        checkUserExist(userId);
+        education.setUserId(userId);
+        return educationRepository.save(education);
+    }
+
+    private void checkUserExist(int userId) {
         if (!userRepository.existsById(userId)) {
             throw new UserNotFoundException(userId);
         }
-        return educationRepository.findByUserId(userId);
     }
 }
