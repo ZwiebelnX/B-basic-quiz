@@ -49,6 +49,18 @@ public class UserControllerTest {
     }
 
     @Test
+    public void should_get_user_when_get_user_given_user_id() throws Exception {
+        mockMvc.perform(get("/users/1/")).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("KAMIL"));
+    }
+
+    @Test
+    public void should_throw_exception_when_get_user_given_non_exist_user_id() throws Exception {
+        mockMvc.perform(get("/users/1000"))
+            .andExpect(status().isNotFound())
+            .andExpect(jsonPath("$.message").value("ID为<1000>的用户未找到"));
+    }
+
+    @Test
     public void should_throw_exception_when_get_educations_given_non_exist_user_id() throws Exception {
         mockMvc.perform(get("/users/1000/educations"))
             .andExpect(status().isNotFound())
