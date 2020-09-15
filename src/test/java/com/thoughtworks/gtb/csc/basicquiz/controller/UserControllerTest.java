@@ -1,6 +1,7 @@
 package com.thoughtworks.gtb.csc.basicquiz.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thoughtworks.gtb.csc.basicquiz.model.Education;
 import com.thoughtworks.gtb.csc.basicquiz.model.User;
 
 import org.junit.jupiter.api.Test;
@@ -65,5 +66,38 @@ public class UserControllerTest {
         mockMvc.perform(get("/users/1000/educations"))
             .andExpect(status().isNotFound())
             .andExpect(jsonPath("$.message").value("ID为<1000>的用户未找到"));
+    }
+
+    @Test
+    public void should_add_users_education_when_post_education_given_user_id_and_education_info() throws Exception {
+        Education education = Education.builder().title("test education").description("test").year(2008).build();
+
+        mockMvc.perform(post("/users/1/educations").contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(education)))
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.id").value(3));
+        mockMvc.perform(get("/users/1/educations")).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(3)));
+    }
+
+    @Test
+    public void should_throw_exception_when_post_education_given_non_exist_user_id() throws Exception {
+        Education education = Education.builder().title("test education").description("test").year(2008).build();
+
+        mockMvc.perform(post("/users/1000/educations").contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(education)))
+            .andExpect(status().isNotFound())
+            .andExpect(jsonPath("$.message").value("ID为<1000>的用户未找到"));
+        mockMvc.perform(get("/users/1/educations")).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(2)));
+    }
+
+    @Test
+    public void should_throw_exception_when_post_education_given_illegal_education_info() throws Exception {
+        Education education = Education.builder().title("test education").description("test").year(-1).build();
+
+        mockMvc.perform(post("/users/1/educations").contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(education)))
+            .andExpect(status().isUnprocessableEntity())
+            .andExpect(jsonPath("$.message").value("年份需要在1900 - 2100年之间"));
+        mockMvc.perform(get("/users/1/educations")).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(2)));
     }
 }
