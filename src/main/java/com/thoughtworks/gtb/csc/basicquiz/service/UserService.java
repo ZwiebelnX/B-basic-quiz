@@ -28,6 +28,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    // GTB: + 从外部文件加载默认数据
+    // GTB: - 加载默认数据的代码可以转移到 BasicquizApplication 中去，通过 ApplicationRunner 来做
+
+    // GTB: - 如果@Transactional暂时不需要，就删掉
     // @Transactional
     @PostConstruct
     public void insertDefaultInfo() {
@@ -57,6 +61,7 @@ public class UserService {
 
     public User getUser(long userId) {
         User user = userRepository.findById(userId);
+        // GTB: 可以再了解一下 Optional API，换种写法
         if (user == null) {
             throw new UserNotFoundException(userId);
         }

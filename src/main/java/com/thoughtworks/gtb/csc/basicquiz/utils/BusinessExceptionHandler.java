@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.sql.Timestamp;
 
+// GTB: - BusinessExceptionHandler属于 controller 这一层，放到一个包即可，包名可以叫 web 或者 api 等
+// GTB: + BusinessExceptionHandler 还 handle 了一些其它情况
 @RestControllerAdvice
 public class BusinessExceptionHandler {
 
