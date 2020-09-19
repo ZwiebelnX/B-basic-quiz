@@ -32,7 +32,7 @@ public class UserControllerTest {
         mockMvc.perform(
             post("/users").content(objectMapper.writeValueAsString(user)).contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.id").value(2));
+            .andExpect(jsonPath("$.id").value(3));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class UserControllerTest {
 
     @Test
     public void should_get_user_when_get_user_given_user_id() throws Exception {
-        mockMvc.perform(get("/users/1/")).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("KAMIL"));
+        mockMvc.perform(get("/users/1/")).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("Chen Sicong"));
     }
 
     @Test
@@ -75,7 +75,7 @@ public class UserControllerTest {
         mockMvc.perform(post("/users/1/educations").contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(education)))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.id").value(3));
+            .andExpect(jsonPath("$.id").value(5));
         mockMvc.perform(get("/users/1/educations")).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(3)));
     }
 
