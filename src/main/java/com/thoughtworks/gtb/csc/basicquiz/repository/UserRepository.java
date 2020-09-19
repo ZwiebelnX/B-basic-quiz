@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Component
 public class UserRepository {
 
+    // GTB: + 考虑了并发编程的情况：ConcurrentHashMap、AtomicLong
     private static final Map<Long, User> userMap = new ConcurrentHashMap<>();
 
     private static final AtomicLong nextId = new AtomicLong(1);

@@ -17,6 +17,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// GTB: + 有测试，且场景覆盖还可以
+// GTB: - 有三个测试不通过
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserControllerTest {
