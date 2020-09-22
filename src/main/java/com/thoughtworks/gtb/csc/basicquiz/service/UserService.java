@@ -62,12 +62,13 @@ public class UserService {
     }
 
     public User getUser(long userId) {
-        Optional<User> userOptional = userRepository.findById(userId);
-        // GTB: 可以再了解一下 Optional API，换种写法
-        if (!userOptional.isPresent()) {
-            throw new UserNotFoundException(userId);
-        }
-        return userOptional.get();
+//        Optional<User> userOptional = userRepository.findById(userId);
+//        // GTB: 可以再了解一下 Optional API，换种写法
+//        if (!userOptional.isPresent()) {
+//            throw new UserNotFoundException(userId);
+//        }
+//        return userOptional.get();
+        return userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
     }
 
     public List<Education> getUsersEducations(long userId) {
